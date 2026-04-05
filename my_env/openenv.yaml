@@ -1,0 +1,43 @@
+spec_version: 1
+name: my_env
+type: space
+runtime: fastapi
+app: server.app:app
+port: 8000
+
+metadata:
+  title: Customer Service Queue Environment
+  description: >
+    A realistic OpenEnv environment that simulates Tier-1 customer support work.
+    Agents must triage, respond to, resolve, transfer, or escalate support tickets.
+  domain: customer_support
+  real_world_simulation: true
+  deterministic_tasks: true
+  baseline_script: baseline
+  observation_model: my_env.models.CustomerServiceObservation
+  action_model: my_env.models.CustomerServiceAction
+  reward_model: my_env.models.CustomerServiceReward
+  state_model: my_env.models.CustomerServiceState
+
+tasks:
+  - id: easy_billing_refund
+    difficulty: easy
+    objective: >
+      Correctly triage a duplicate-charge billing ticket, respond empathetically,
+      and resolve it without escalation.
+    grader: my_env.graders.grade_task
+    score_range: [0.0, 1.0]
+  - id: medium_support_queue
+    difficulty: medium
+    objective: >
+      Work through a three-ticket Tier-1 queue, including one request-for-info case,
+      and close all tickets without unnecessary escalation.
+    grader: my_env.graders.grade_task
+    score_range: [0.0, 1.0]
+  - id: hard_escalation_judgment
+    difficulty: hard
+    objective: >
+      Manage a five-ticket queue where correct escalation judgment matters as much as
+      standard triage and response quality.
+    grader: my_env.graders.grade_task
+    score_range: [0.0, 1.0]

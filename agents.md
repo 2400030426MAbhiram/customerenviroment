@@ -1,0 +1,1 @@
+Claude Code operates using specialized sub-agents. See .claude/agents/ for its specific roles (e.g., supreme-architect.md, implementer.md). Codex is our secondary reviewer. Windsurf handles frontend/UI.

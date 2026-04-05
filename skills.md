@@ -1,0 +1,1 @@
+"Coding standards and testing strategies are located in .claude/docs/TESTING_STRATEGY.md and .claude/docs/PRINCIPLES.md.
